@@ -1,0 +1,19 @@
+<div class="example-container">
+  
+  
+  
+  <mat-form-field>
+    <input matInput type="text" placeholder="Enter category name" [formControl]="category_name" [errorStateMatcher]="matcher" required>
+    <mat-error *ngIf="category_name.hasError('required')">Category name is <strong>required</strong></mat-error>
+    <mat-error *ngIf="category_name.hasError('minlength')">Category name must be minimum of 3</mat-error>
+    <mat-error *ngIf="category_name.hasError('maxlength')">Category name must be maximum of 100</mat-error>
+  </mat-form-field>
+
+
+  
+  <br>
+  <button type="submit" (click)="submit()"> 
+    Submit Passwords 
+  </button>
+  
+</div>
