@@ -15,17 +15,20 @@ import { Category } from './category.model';
 export class CategoryService {
   baseUrl = Config.apiUrl + "category"
 
+ 
+
   constructor(private http: Http) { }
 
   create(category:Category){
     
+    let data = 
+    "category_title="+ category.title+
+    "&category_parent="+category.parent+
+    "&action=create"
+    
     return this.http.post(
       this.baseUrl,
-      JSON.stringify({
-        category_title: category.title,
-        category_parent: category.parent,
-        action: 'create'
-      }),
+      data,
       {headers:this.getCommonHeaders()}
     ).pipe(
       map(res => res.json()),
@@ -36,14 +39,14 @@ export class CategoryService {
           });
           return category;
       }),
-      retryWhen(errors => errors.pipe(take(5), delay(1000), concatMap(this.handleErrors))),
+      retryWhen(errors => errors.pipe(take(5), delay(1000), catchError(this.handleErrors))),
  
     );
   }
 
   getCommonHeaders(){
     let headers = new Headers();
-    headers.append("Content-Type", "application/json");
+    headers.append("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
     return headers
   }
 

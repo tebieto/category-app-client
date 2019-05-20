@@ -21,7 +21,11 @@ export class CustomErrorHandler {
           }
           
         else if(error.status==400){
-    
+            let message =  JSON.parse(error._body)
+
+            if (message.sql){
+              return message.sql.Message
+            }
             return'Bad request'
       
           }else {
