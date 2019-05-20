@@ -1,4 +1,15 @@
-<div class="form-container">
+<mat-toolbar color="primary" class="tool-bar">
+    <mat-toolbar-row>
+        <span>Home</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+      </mat-toolbar-row>
+  </mat-toolbar>
+
+
+<div class="contents row">
+<div  class=" col-xs-12 col-md-2"></div>
+<div  class="form-container col-xs-12 col-md-4">
   
   <mat-form-field appearance="outline">
     <mat-label>Category title</mat-label>
@@ -15,4 +26,12 @@
   
 </div>
 
+<div class="list col-xs-12 col-md-4">
 
+<app-list></app-list>
+
+</div>
+
+<div  class=" col-xs-12 col-md-2"></div>
+
+</div>

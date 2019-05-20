@@ -2,6 +2,16 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+
+body {
+    max-width:99% !important;
+    background: #fff !important;
+}
+
+.tool-bar {
+    width:101% !important;
+}
+
 .snack-error {
     background: red;
     color: #fff;
@@ -14,6 +24,15 @@
 
 .snack-text {
     margin-left:20%;
+}
+
+.mat-paginator-page-size-label { 
+    color: transparent;
+}
+
+.mat-paginator-page-size-label::after { 
+    content: "Category per page" !important;
+    color: #000
 }
 
 

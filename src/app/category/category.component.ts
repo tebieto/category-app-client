@@ -26,7 +26,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class CategoryComponent implements OnInit {
 
-readList: Array<Category>= []
+categoryList: Array<Category>= []
 category: Category;
 
 
@@ -77,21 +77,19 @@ category: Category;
 
     this.categoryService.create(this.category)
       .subscribe(
-        (datas) => {
+        (result) => {
           let notification = 'Category saved successfully'
-          this.openSnackBar(notification, 'snack-error')
-        datas.forEach((data)=> {
-          this.readList.push(data)
-        });
+          this.openSnackBar(notification, 'snack-success')
+          this.categoryList.push(result)
+        
       },
       (error)=>{
-
+        
         let notification = errorMessage.ConnectionError(error)
         this.openSnackBar(notification, 'snack-error')
         
       });
 
-      console.log(this.readList)
       
       displayErrors = false
       this.category_title.setValue("")
