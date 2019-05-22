@@ -7,7 +7,7 @@
   
   <mat-form-field appearance="outline">
     <mat-label>Category title</mat-label>
-    <input matInput type="text" placeholder="Enter category title" [formControl]="category_title" [errorStateMatcher]="matcher" (click)="hideErrors()" required>
+    <input matInput type="text" placeholder="Enter category title" [formControl]="category_title" [errorStateMatcher]="matcher" (click)="hideErrors()" (keyup.enter)="onSubmit()" required>
     <mat-error *ngIf="category_title.hasError('required')">Category title is <strong>required</strong></mat-error>
     <mat-error *ngIf="category_title.hasError('minlength')">Category title must be minimum of 2 characters</mat-error>
     <mat-error *ngIf="category_title.hasError('maxlength')">Category title must be maximum of 100 characters</mat-error>

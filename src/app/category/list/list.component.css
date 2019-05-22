@@ -14,4 +14,16 @@ table {
   .delete-link {
     color: red;
     cursor:pointer;
+    position:relative;
+    top:8px !important;
+    left: 20px;
+    font-size: 5px;
+  }
+
+  .delete-link:hover {
+    color: rgb(128, 10, 10);
+  }
+
+  td a:link {
+    text-decoration: none;
   }
