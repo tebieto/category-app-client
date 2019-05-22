@@ -6,11 +6,14 @@
 body {
     max-width:99% !important;
     background: #fff !important;
+    font-family: Roboto, sans-serif;
 }
 
 .tool-bar {
     width:101% !important;
 }
+
+
 
 .snack-error {
     background: red;
@@ -36,9 +39,51 @@ body {
 }
 
 
+
+
+
+
 @media only screen and (max-width: 500px) {
     
     .snack-text {
         margin-left:10%;
     }
   }
+
+
+
+  .form-container{
+    display: flex;
+    flex-direction: column;
+    border:1px solid transparent;
+   
+  }
+
+  .list, .form-container{
+      margin-top:100px;
+  }
+
+  .example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+
+
+  @media only screen and (max-width: 900px) {
+    
+    .form-container{
+        width: 100%;
+        margin: auto;
+        margin-top:50px;
+        margin-left:4px;
+      }
+
+      .list{
+        margin-left:4px;
+      }
+  }
+    

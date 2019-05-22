@@ -6,6 +6,7 @@ import { CategoryService } from '../shared/category/category.service';
 import { CustomErrorHandler as errorMessage} from '../custom-error-handler';
 import {MatSnackBar} from '@angular/material';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { CategoryModule } from './category.module';
 
 
 let onUserSubmit = false
@@ -22,12 +23,20 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.css'],
+  providers: [CategoryService,]
 })
 export class CategoryComponent implements OnInit {
 
 categoryList: Array<Category>= []
 category: Category;
+
+pageInfo = {
+  page_title: 'Home',
+  parent_id: 0,
+  category_id: 0,
+  component: 'Category'
+}
 
 
   category_title = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]);
@@ -42,6 +51,8 @@ category: Category;
    }
 
   ngOnInit() {
+   
+    this.categoryService.pageInfo.next(this.pageInfo)
   }
 
   public onSubmit() {
@@ -78,6 +89,7 @@ category: Category;
     this.categoryService.create(this.category)
       .subscribe(
         (result) => {
+          
           let notification = 'Category saved successfully'
           this.openSnackBar(notification, 'snack-success')
           this.categoryList.push(result)

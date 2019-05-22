@@ -1,19 +1,14 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, Inject } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from 'src/app/shared/category/category.service';
-import { Category } from '../../shared/category/category.model';
-
-
-
-
+import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
+import { Category } from 'src/app/shared/category/category.model';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-child-list',
+  templateUrl: './child-list.component.html',
+  styleUrls: ['./child-list.component.css']
 })
-export class ListComponent implements OnInit {
-
+export class ChildListComponent implements OnInit {
   categoryList: Array<Category>= []
   category: CategoryModel
   pageTitle: string
@@ -22,24 +17,23 @@ export class ListComponent implements OnInit {
 
   displayedColumns: string[] = ['title', 'parent',  'action'];
   dataSource = new MatTableDataSource<CategoryModel>();
-  sn = 0
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private categoryService: CategoryService, public dialog: MatDialog){
+  constructor(private categoryService: CategoryService,){
 
    this.categoryService.pageInfo.subscribe(info=>{
-    
-     CategoryData = []
       this.pageTitle = info['page_title']
       this.parentId = info['parent_id']
-
-      this.readCategories()
       
+      this.readCategories()
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      
+       
     })
-
-    
 
     categoryService.newCategoryAlert.subscribe(
       (newCategory)=>{
@@ -55,13 +49,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
 
    
-   
   }
-
-  
-
-
-
 
   applyFilter(filterValue: string) {
     
@@ -94,48 +82,6 @@ export class ListComponent implements OnInit {
     
   }
 
-  onDeleteCategory(id: number, title: string){
-
-    this.openDialog(id, title)
-  }
-
-  openDialog(id:number, title:string): void {
-    const dialogRef = this.dialog.open(DeleteDialogue, {
-      width: '250px',
-      data: {id: id, title: title}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      if(!result){
-        return
-      }
-     this.deleteCategory(result)
-    });
-  }
-
-
-  deleteCategory(id: number){
-    console.log(CategoryData)
-    this.categoryService.delete(this.parentId, id)
-      .subscribe(
-        (result) => {
-        let category = CategoryData.find((c)=>{
-           return c.id===id
-         })
-
-         let index = CategoryData.indexOf(category)
-         
-         CategoryData.splice(index, 1)
-         this.dataSource.paginator = this.paginator;
-            
-        
-      });
-  }
-
-
-
-
   refreshCategoryData(){
      
   }
@@ -151,12 +97,6 @@ export class ListComponent implements OnInit {
 
 }
 
-
-export interface DialogData {
-  id: string;
-  title: string;
-}
-
 export interface CategoryModel {
   id: number;
   title: string;
@@ -166,19 +106,3 @@ export interface CategoryModel {
 
 let CategoryData = [];
 
-
-@Component({
-  selector: 'delete-dialogue',
-  templateUrl: '../delete-dialogue.html',
-})
-export class DeleteDialogue {
-
-  constructor(
-    public dialogRef: MatDialogRef<DeleteDialogue>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onDontDelete(): void {
-    this.dialogRef.close();
-  }
-
-}

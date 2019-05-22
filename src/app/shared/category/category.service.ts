@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {Http, Headers, Response} from '@angular/http';
-import {throwError} from 'rxjs';
+import {throwError, Subject, AsyncSubject} from 'rxjs';
 import { map, retryWhen, delay, take, concatMap, catchError, retry, tap} from 'rxjs/operators';
 
 
@@ -21,7 +21,8 @@ export class CategoryService {
 
   constructor(private http: Http) { }
 
-  newCategoryAlert = new EventEmitter<{}>();
+  newCategoryAlert = new Subject<{}>();
+  pageInfo = new Subject<{}>();
   
   create(category:Category){
     
@@ -40,7 +41,7 @@ export class CategoryService {
 
           this.newCategory = data
 
-          this.newCategoryAlert.emit(this.newCategory)
+          this.newCategoryAlert.next(this.newCategory)
           
           return data;
       }),
@@ -50,11 +51,15 @@ export class CategoryService {
   }
 
 
-  read() {
+
+  read(parent_id, category_id) {
     
     let data = 
-    "category_parent=0&category_id=0&action=read"
+    "category_parent="+ parent_id +
+    "&category_id="+category_id +
+    "&action=read"
     
+ 
     return this.http.post(
       this.baseUrl,
       data,
@@ -66,7 +71,31 @@ export class CategoryService {
           data.forEach(element => {
             category.push(element)
           });
+          
           return category;
+      }),
+
+       catchError(this.handleErrors)
+    );
+  }
+
+
+  delete(parent_id, category_id) {
+    
+    let data = 
+    "category_parent="+ parent_id +
+    "&category_id="+category_id +
+    "&action=delete"
+    
+ 
+    return this.http.post(
+      this.baseUrl,
+      data,
+      {headers:this.getCommonHeaders()}
+    ).pipe(
+      map(res => res.json()),
+      map(data => {
+         return data;
       }),
 
        catchError(this.handleErrors)
