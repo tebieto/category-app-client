@@ -12,6 +12,7 @@ import { Category } from '../../shared/category/category.model';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
+
 export class ListComponent implements OnInit {
 
   categoryList: Array<Category>= []
