@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatFormFieldModule, ShowOnDirtyErrorStateMatcher, ErrorStateMatcher, MatInputModule, MatSnackBarModule, MatIconModule, MatList, MatListModule, MatToolbarModule, MatPaginatorModule, MatTableModule, MatDialog, MatDialogModule} from '@angular/material';
+import {MatButtonModule, MatFormFieldModule, ShowOnDirtyErrorStateMatcher, ErrorStateMatcher, MatInputModule, MatSnackBarModule, MatIconModule, MatList, MatListModule, MatToolbarModule, MatPaginatorModule, MatTableModule, MatDialogModule} from '@angular/material';
 import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -49,7 +49,7 @@ import { ChildListComponent } from './category/child-category/child-list/child-l
     MatToolbarModule,
     MatPaginatorModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
