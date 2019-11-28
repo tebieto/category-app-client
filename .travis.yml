@@ -22,7 +22,9 @@ deploy:
   on:
     branch: master
 script:
-- npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+ # run unit tests
+  - npm test
+  # update Protractor and Selenium including ChromeDriver
   - npm run webdriver-update
   # launch Selenium standalone in the background
   - npm run webdriver-start
