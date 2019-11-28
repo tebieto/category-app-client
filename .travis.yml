@@ -21,6 +21,16 @@ install:
 
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - ng e2e --protractor-config='e2e/protractor.ci.conf.js'
 
 after_script:
   - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  secure: "1IegM1uInEnYc3WQRf8luE4jygqvkxk+ct+migkqnWUDSuXCdXEuCTu68nNJI/yrMqeuMn9tWHVqsdvPJ2mjCRpPDd6OLdoDb3IyV3i0nGIW0nGllqahvp5oyh7VombuamwGy7RYVIpMFmqnDcH+ZLvLOhqHog7Zoipp4noHQmm3Ub+zvR0wNGZBbV++lASzmN7WzEYlaORgg4ox6UBVHmxArw/PgQ0L6H4dJPDwrXjGlN2sL9asUKXGkydwkCxM2ZrwIItoXJsxIFZvybF5WdnrdVyIA9pgkh56iRNbE8As7QCrNPhv0YI4SQlSNTvXkLBJWos6WOvI6PHE85V8N2P2I7myvB5UabiRwVL34akW67S9XSfkljvD3OTBOmS7H2qeOjVo7RgZJB2pD2LlUJG4Fkab85fIhfZAso22Ctow9oLJJcejXnsDWCFVlI2F4BIdPlyZhD9bczBhPAGypV+msvdiuB43WJcYemoma/aYmHnB9HsKJQqj6YRBx3Sn6wJg/Xf2gGxsbZj/2OxjIw9hUT2iFBOjbuii9KSHJ5EQrBwqvME7KEU8Ry5crULsoVIDGRG0D8PKVnuuMjGlWTAkFGT7SU1yCPz7NkjycvHE+Ei2VHmD2DMJOWHBSYI44TZ9ne8vIJBc96KtN9uebX7X0IjvKEikUEZoJHyUFDk="
+  keep_history: true
+  local_dir: capp
+  on:
+    branch: master
