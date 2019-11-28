@@ -6,6 +6,4 @@ generate parent and child categories.
 
 Angular 7, RxJs, Angular Material, Bootstrap 4
 
-[![CI Status]
-   (http://img.shields.io/travis/roamlrs/roamlrs.svg?style=flat)]
-   (https://travis-ci.org/roamlrs/roamlrs)
+[![Build Status](https://travis-ci.com/tebieto/category-app-client.svg?branch=master)](https://travis-ci.com/tebieto/category-app-client)
