@@ -7,4 +7,4 @@ generate parent and child categories.
 Angular 7, RxJs, Angular Material, Bootstrap 4
 
 [![Build Status](https://travis-ci.com/tebieto/category-app-client.svg?branch=master)](https://travis-ci.com/tebieto/category-app-client)
-[![Coverage Status](https://coveralls.io/repos/github/tebieto/category-app-client/badge.svg?branch=terry)](https://coveralls.io/github/tebieto/category-app-client?branch=terry)
+[![Coverage Status](https://coveralls.io/repos/github/tebieto/category-app-client/badge.svg?branch=master)](https://coveralls.io/github/tebieto/category-app-client?branch=terry)
