@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test  --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -42,6 +42,7 @@
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "codelyzer": "~4.5.0",
+    "coveralls": "^3.0.9",
     "eslint": "^6.7.1",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
