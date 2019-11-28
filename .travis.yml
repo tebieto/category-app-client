@@ -23,7 +23,12 @@ deploy:
     branch: master
 script:
 - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-- ng e2e --protractor-config='e2e/ci.protractor.conf.js'
+# update Protractor and Selenium including ChromeDriver
+  - npm run webdriver-update
+  # launch Selenium standalone in the background
+  - npm run webdriver-start
+  # run Protractor E2E tests
+  - npm run ci-e2e
 after_script:
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 env:
