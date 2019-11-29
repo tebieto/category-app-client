@@ -14,24 +14,21 @@ cache:
   - "./node_modules"
 install:
 - npm install
+before_script:
+  - npm install -g @angular/cli
+script:
+- npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+- ng build --prod --base-href https://tebieto.github.io/category-app-client/
+after_script:
+- cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: "$GITHUB_TOKEN"
   keep_history: true
+  local_dir: dist/category-app
   on:
     branch: master
-script:
- # run unit tests
-  - npm test
-  # update Protractor and Selenium including ChromeDriver
-  - npm run webdriver-update
-  # launch Selenium standalone in the background
-  - npm run webdriver-start
-  # run Protractor E2E tests
-  - npm run ci-e2e
-after_script:
-- cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 env:
   global:
-    secure: WXvEfeMd2sJ3rNVMjSUCLFoKaSo5doJX8dCKccuols6yEdSh9U0GDXgvJwuT8cKCYeIGHM1tUbIrE1tLC5WN0FqBcF4Gj309J1PXgcYuBIeC5c0aNv6Tw1oBA0GuUrnawgbNpHEeDT+yO3J4hYmkuI5HLB7c+O98mFIe6XKA2Z01wKL5CzAt152mvj+f9f5Afw4P36NQSo4kCUS5IcWER9yoeBWNWha3H/RTlLt2AoAVzz+2LHC3UD/agtvdnFxWv8afRsj8T5xTDzy8DbT/5ROVwX04f/rgEtbUrB8WaArDemlb0oMCjO0EzDEWyO1jNprWI1EyOyjL53MDBPYLteYNh6ETVgvd2G37DxOyDsvXpQt1tV4E+lyGoE6Pvl6FLFXOaSo/f6uWeCpdYNEV3X/BNGWIXjNxR5eJlztzqGquVy1m/kswRVGv+KG75REi9njO1J4E7igDWaITRfMExxN46WMCtv2Xw5xqZfUfcVn/GjFGW3IZI0ufHyxBvn9yGQZeao3wDqnTiPxbZEaPiplqdpSw5WgvDHGdNsCsoORuV6WeNN713mhK1ifG1w4aVitSGLjI30RTKjf3JSLFE6uiztPC6n8f2Qhs2/z99euzikP6NHxKyeZct+Qm12D8VJfnuJ4R613D7qQSHOciGEGO1SFSEyu1lJV2IfpQfL8=
+    secure: OFkG1Wjg//+bTjSiXUNJ77u0ys6/mb6SiSSPANstEONdD44fRYZMBFjZLxU6pjwtUOKmk12d+3wrdjMUjQl3G16slmo6u9Yqoc27LyGAs1ZP/KpH7tRUys/63uehRy3YtoHFJfGGCIXZJvcFyFUqTV+Njyc4N2Eni9VNYR86yum4wwq+eTolFjvTAnFlGZrKZHlvG2PsbAYRoTr4wiB7Bz4hEoNngjGd5qhV5TnUfdnS7GHWstR+XIujj6IefddGqwe+4nuhbo9b5BKle4z381ncFIae5QmZEHXbvzG9XauFTa1rgLQNNMF7ngz57dSfig+FXoHYNMQP2IBOkfW/Dnyv7mEX7i93/XZHPkboBXIcu1kIWBHDXESQW/DRphVvz7zodUQr4RyhyoXbGN8Zfj5fHupsqnAMydjC8CFE7uMQOX2lRF8ixvX4C6k7O26yRHgk5seP6poAf0ta7KYyNGet5QW1I1+tUOXkxxv9mss0dnj2DcfNo1ehhF3wFgTxng+0ml4o/iwl+MvhZrNg+EyzjTo7ghVSUoQpP8fu6iCKhLhlraPW5NCHmeZXmquekCRPCuxiLfA54G4wb9VbiBYr4vADuquYDvbMo5GQbymBAalU0efY18LPDzJsMpIAPxP/oCccZyBnlvwqot6ryyrS5b6Kn2nTUZV2AxGwh4s=
