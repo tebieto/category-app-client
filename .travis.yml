@@ -16,7 +16,7 @@ install:
 - npm install
 before_script:
 - npm install -g @angular/cli
-- ng build --prod
+- ng build --prod --base-href=/category-app-client/
 script:
 - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
 after_script:
@@ -24,13 +24,12 @@ after_script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  github_token: "$GITHUB_TOKEN"
   keep_history: true
-  local_dir: "dist/category-app"
-  project_name: "catapp"
-  
+  local_dir: dist/category-app
+  project_name: catapp
   on:
     branch: master
 env:
   global:
-    secure: DfBf+XCJG+QSDdcuIJOJ0Lp1tJWKzXEiJOohelT5anG/f0G5bZZUQejr0RHn2ec6J0OEzdj4fM8WfvreNAVrzBcbznK0oklM9tbbEoCh0wAOrYG22x5F9IcLcecjpWZDEZfvCOyzJzwNh/qxv6q6cX0AOKVXhhoRYmJFM1lNYTOObwXyam/eLI5NXMKdGi22Ua63chj3BGK4D8QBBxLGFygJYAJWUj0tdga+2ORkvDHOFam/gp4fxq51x1pmdXB0PQFCBSSfjNXX2RFvLg6UrKHzwD4LDTIqbsK3N2V9muklIWISWaR+t0G/tOPs10afv36nDhhtjmlG17dBhNzrQMx2UvfZUwkIsdT+0zdgc5lO9ejNiDYNVPMXg2fsKER8PJEbsc+2temJ7CGjivqIyjCDP+NdMOdLB61IyxQqZRH2auP4E/6zyu4byskA/diHlMp56LswXQdTUKYKsifmVc4jtmbiLP/OMnQ2Q3aNVnOs/4jcnR0Z2h8RNgzY4EaYz5VuFgwn7jYE6W/TMhlqp2zoQFyP/rjP/uXBbVqaPOr5ho7TWpJNRr4UxU2juPr78O7SlOIF9CU71oYD6M0rvawNopeIpmHVktg+qEQ7hhhsfkaDhxoY/uC2dpUFMkPuEJ3eYymOPocdwcrNkkgyR2HrDVwJHM3Hs+Awi6diWK4=
+    secure: Che/jmMIATnhpKr1qfxzsWhlMrUVR19FygPPymmrUE5zaAyhhqmQwPQDj0DwzwiG5mGbeamCFRhRJXWEl2Ir0xFMT67HA66MPKacnz5+V4xZaEDBAU0ZXuCwOLb2RxGMuEhBx5xQXir5m+k0HbYn+YMeJNX4LMqDPHFlMv6ThxwELlMHvgwTddprRNQju3h+sUZLMPP29O6RiVJK3cOuu66AbTcX0Q5rqCBc98Svxml+0rYo3lXQwvTrINftxDM/CrhSTCU/7mB4BAF7Q/4mtMBZnPjZIaLzpmcvnSx7TFWwxcY23ldRbWm5Qclezwf7Y9O9AwVLm7BnZ+Ob/kVleZwSOslnSkmTh1Uk5t19N07Ygef5HCBuF5o3mRAao/3X4Thg6t2Qz8iVDWm61M7yGWsYDeatajMExTxpwDDk80xk6RLDVk7R3B0bOXH2w1YFbvBLgiDoE8StK+5jd1QylSftpUaBOoKIIoWHysU3ZvvIWnPTaI0Z0WJOC7peQjDwKLPSL9ZWSeG8xrWU8RVSQEq8DJsp4VNZELKGQi6dubPf/mf3APZfZ1v2xwVMLxFV0lHPkDSuyqHYb8Oznyi7WX/S9exqPwwQ0oNb3Y9/SoqbK8+hNLxxB4M3i+bTgDCySwfxeIbv0DxFICe1O5Bgkm3M429kb4MC+94UdVA5R7g=
