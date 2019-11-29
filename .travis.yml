@@ -18,7 +18,6 @@ before_script:
   - npm install -g @angular/cli
 script:
 - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-- ng build --prod --base-href https://tebieto.github.io/category-app-client/
 after_script:
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
