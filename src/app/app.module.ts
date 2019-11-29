@@ -15,6 +15,7 @@ import { ChildCategoryComponent } from './category/child-category/child-category
 import { HeaderComponent } from './header/header.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ChildListComponent } from './category/child-category/child-list/child-list.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { ChildListComponent } from './category/child-category/child-list/child-l
     MatPaginatorModule,
     MatTableModule,
     MatDialogModule,
+    RouterModule
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
