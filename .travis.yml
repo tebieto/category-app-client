@@ -16,6 +16,7 @@ install:
 - npm install
 before_script:
 - npm install -g @angular/cli
+- ng build --prod
 script:
 - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
 after_script:
@@ -25,7 +26,9 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   keep_history: true
-  local_dir: dist/category-app
+  local_dir: "dist/category-app"
+  project_name: "catapp"
+  
   on:
     branch: master
 env:
