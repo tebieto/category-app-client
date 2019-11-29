@@ -24,7 +24,7 @@ after_script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: "$GITHUB_TOKEN"
+  github_token: $GITHUB_TOKEN
   keep_history: true
   local_dir: dist/category-app
   project_name: catapp
