@@ -24,14 +24,8 @@ script:
 after_script:
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  local_dir: dist/category-app
-  project_name: catapp
+  provider: heroku
+  api_key:
+    secure: 5JmNIcN6XJ0bYPh9G72DvQTQdL4zBwJHaSjtXP4oB2Y7/dMId7GyscwWM4EPiua/nJpVA0Lh8p+J+vAu9OAmN//8NNHpYT/pAoLR6KG71eMRsUgrhK5HU+VcByk79VcW4T+ZuIkk190RlXZEqYh+cg7z/HsSHVrBqUN3/5jaayi0zRyT0NKLLiTvtFWzMYS1hwNT/kieoQal9wGiibCMxBCh8EgFOtNcq8DN0gAmlIPKOR/E3BIns8EnV4vrCAjCqKpRS17/XwiKM7R9+/TVf/EhRW2RjAkHFo/8B5JTs9GJlnrFamUf4LXt6qUZbKPP/cJld3uP7Y81niAbgMeGzpmyKPdG6lj+RXTSYQhPB8R1nmrAvKN1EXl06dKG7hghb19DOjQNVJko/JXhrdRSJXsjBiXnKho7ptRQf++SBNPn4oRzXPt3DUGlBA3vzn5sCADjU3jvyUb3IViDVYPUCNKSG1eGzwyQ5R7oJTrkaZxVvErOD3JhWSLmRigz1A7uomHjtHzvKfCkpIlTLUeTsD5fzYe7PrxuZOFaL1Jp0+vbuUgOhLsttOuqFpOuSq0eOD/5RB+61GiwNNcVIElqQWgIEqVIJQYXgJ7yUbj3LI1Xth9ogt2PvfHYENdUk2AOOIhy2lnYVkD6FWCHJn3P4KtTvue16DJExkjUs2aPs74=
   on:
-    branch: master
-env:
-  global:
-    secure: Che/jmMIATnhpKr1qfxzsWhlMrUVR19FygPPymmrUE5zaAyhhqmQwPQDj0DwzwiG5mGbeamCFRhRJXWEl2Ir0xFMT67HA66MPKacnz5+V4xZaEDBAU0ZXuCwOLb2RxGMuEhBx5xQXir5m+k0HbYn+YMeJNX4LMqDPHFlMv6ThxwELlMHvgwTddprRNQju3h+sUZLMPP29O6RiVJK3cOuu66AbTcX0Q5rqCBc98Svxml+0rYo3lXQwvTrINftxDM/CrhSTCU/7mB4BAF7Q/4mtMBZnPjZIaLzpmcvnSx7TFWwxcY23ldRbWm5Qclezwf7Y9O9AwVLm7BnZ+Ob/kVleZwSOslnSkmTh1Uk5t19N07Ygef5HCBuF5o3mRAao/3X4Thg6t2Qz8iVDWm61M7yGWsYDeatajMExTxpwDDk80xk6RLDVk7R3B0bOXH2w1YFbvBLgiDoE8StK+5jd1QylSftpUaBOoKIIoWHysU3ZvvIWnPTaI0Z0WJOC7peQjDwKLPSL9ZWSeG8xrWU8RVSQEq8DJsp4VNZELKGQi6dubPf/mf3APZfZ1v2xwVMLxFV0lHPkDSuyqHYb8Oznyi7WX/S9exqPwwQ0oNb3Y9/SoqbK8+hNLxxB4M3i+bTgDCySwfxeIbv0DxFICe1O5Bgkm3M429kb4MC+94UdVA5R7g=
+    all_branches: true
