@@ -20,7 +20,7 @@ before_script:
 - ng build --prod --base-href=/category-app-client/
 script:
 - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-- ng e2e
+- ng e2e --protractor-config='e2e/ci.protractor.conf.js'
 after_script:
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
