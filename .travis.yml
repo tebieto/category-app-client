@@ -19,6 +19,7 @@ before_script:
 - ng build --prod --base-href=/category-app-client/
 script:
 - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+- ng e2e
 after_script:
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
