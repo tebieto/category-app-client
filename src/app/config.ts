@@ -1,3 +1,3 @@
 export class Config {
-    static apiUrl = "http://localhost:4452/"
+    static apiUrl = "http://6339a012.ngrok.io/"
 }
