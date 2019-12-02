@@ -10,6 +10,9 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
+    chromeOptions: {
+      args: [ "--headless", "--no-sandbox", "--disable-dev-shm-usage"]
+    },
     browserName: 'chrome'
   },
   directConnect: true,
