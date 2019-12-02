@@ -20,12 +20,12 @@ before_script:
 - ng build --prod --base-href=/category-app-client/
 script:
 - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-- ng e2e --protractor-config='e2e/ci.protractor.conf.js'
+- npm run ci-e2e
 after_script:
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku
   api_key:
-    secure: 5JmNIcN6XJ0bYPh9G72DvQTQdL4zBwJHaSjtXP4oB2Y7/dMId7GyscwWM4EPiua/nJpVA0Lh8p+J+vAu9OAmN//8NNHpYT/pAoLR6KG71eMRsUgrhK5HU+VcByk79VcW4T+ZuIkk190RlXZEqYh+cg7z/HsSHVrBqUN3/5jaayi0zRyT0NKLLiTvtFWzMYS1hwNT/kieoQal9wGiibCMxBCh8EgFOtNcq8DN0gAmlIPKOR/E3BIns8EnV4vrCAjCqKpRS17/XwiKM7R9+/TVf/EhRW2RjAkHFo/8B5JTs9GJlnrFamUf4LXt6qUZbKPP/cJld3uP7Y81niAbgMeGzpmyKPdG6lj+RXTSYQhPB8R1nmrAvKN1EXl06dKG7hghb19DOjQNVJko/JXhrdRSJXsjBiXnKho7ptRQf++SBNPn4oRzXPt3DUGlBA3vzn5sCADjU3jvyUb3IViDVYPUCNKSG1eGzwyQ5R7oJTrkaZxVvErOD3JhWSLmRigz1A7uomHjtHzvKfCkpIlTLUeTsD5fzYe7PrxuZOFaL1Jp0+vbuUgOhLsttOuqFpOuSq0eOD/5RB+61GiwNNcVIElqQWgIEqVIJQYXgJ7yUbj3LI1Xth9ogt2PvfHYENdUk2AOOIhy2lnYVkD6FWCHJn3P4KtTvue16DJExkjUs2aPs74=
+    secure: dv4ZM7LmWgBrkhAWXDz2nHAZSQ+DCFeLl+GmWiP4r+PjpwWuojfKNliKrP0ONJeBpzBIePTO757oowFr5cOUlcYP4rnsGpxqr7kQxNryizAmq8umM/ZC42P+woZXwKJSkBvasCl6BD0912KaOSWLKG5SiVg8DKdgFSyPMGbrfwNQhaPVXyEY8pwpzB8e5aPvmxtc9zdVG3taO01QQP7WkLSSuYT/HLMgR4FTqyjQFfFbAm7OUKlvzC4+YXq93YkROt6F+SbpveJKnDmEtgDb53YHNNFKNJ6SSadZn1YDjdhqOJBK66oCZe2J2v1v3W1mDXG9LE9EFeOXmrPqW9jkU5MWAG+6p9c+cAGhbuiP1yUtupr/L1s8U5oe9WIqkk/mGdQWgzGMC8kGWVw2PPy+39BJyH+pTJmcZfBiYe2ghGqn1syJ1MXXY6BjNRXVO0I8sb1NvLN1hBotBon59nlHrCLHAuhP364VUJo1jWLiFZknkBbYEmcdootv8rUA+QYfZwaofnrZX54Nr6aAP4Ob6ZTd2ktt18Vhg6/K3UjkCgWcxIHOBeVic/bSdZx85AslINUsgN/zIZyxJFFCI7blAGa9X2gcPQtJ5kEuuNr8PhXm7xXzpQULrOWJgkSzWnydqMWS33nnAo3kppjabOL2iFkOzmfsrjVFlCJnM7lhJmY=
   on:
     all_branches: true
